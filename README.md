@@ -1,2 +1,2 @@
-# TP2_ElMaGoRoms
+# web2_ElMaGoRoms
 Pagina de Roms - Creada por Iago Medina Duran y Matias Morcillo
