@@ -18,4 +18,4 @@ La base de datos está compuesta por las siguientes entidades principales:
 ## Diagrama de la Base de Datos
 ![Diagrama de la base de datos](img/web2_elmagoroms.png)
 ## Autor
-Este proyecto fue realizado por Matías Morcillo y Iago Medina Durán.
+Este proyecto fue realizado por Matías Morcillo (matiasmorcillo128@gmail.com) y Iago Medina Durán (iagomduran@gmail.com).
