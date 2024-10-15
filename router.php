@@ -36,9 +36,9 @@ switch ($params[0]) {
         break;
     case 'juego':
         if (isset($params[1])){
-            $id= $params[1];
             $juegoController= new juegoController();
-            $juegoController-> showJuego($params[1]);
+            $ID_juego= $params[1];
+            $juegoController-> showJuego($ID_juego);
         }
         break;
     case 'listaPlataforma':

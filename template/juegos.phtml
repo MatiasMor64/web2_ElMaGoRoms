@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./public/img/elmagoroms.png">
-    <title>El MaGo Roms</title>
-    
-</head>
-<body>
-    <article class="seccion-juegos">
-        <?php foreach($juegos as $juego){  ?>
-            <div class="objeto">
-                <img class="imagen-objeto" src=" <?php echo $juego->imagen; ?>" alt="img">
-                <h1> <?php echo $juego->nombre; ?> </h1>
-                <p> <?php echo $juego->ID_plat; ?></p>
-            </div>
-        <?php } ?>
-    </article>
-</body>
-</html>
+<?php require_once './template/layout/header.phtml'; ?>
+<article class="seccion-juegos">
+    <?php foreach($juegos as $juego){  ?>
+        <div class="objeto">
+            <img class="imagen-objeto" id="imagen-detalle" src=" <?php echo $juego->imagen; ?>" alt="img">
+            <h1> <?php echo $juego->nombre; ?> </h1>
+            <p> <?php echo $juego->ID_plat; ?></p>
+        </div>
+    <?php } ?>
+</article>
+
+<?php require_once "./template/layout/footer.phtml"; ?>

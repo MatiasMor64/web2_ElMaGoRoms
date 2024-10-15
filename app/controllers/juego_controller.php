@@ -16,8 +16,9 @@ function showHome(){
     return $this->view->showHome($juegos); 
 }
 
-function showJuego($id){
-    echo "<h1>juego especifico</h1>";
+function showJuego($ID_juego){
+    $juego= $this->model->getJuego($ID_juego);
+    return $this->view->showDetail($juego);
 }
 
 }

@@ -1,3 +1,22 @@
+/*header*/
+header{
+    background-color: rgb(82, 80, 83);
+
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+}
+
+/*footer*/
+footer{
+    align-items: center;
+    text-align: center;
+}
+
+/*lista general de juegos*/
 .seccion-juegos{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -16,4 +35,19 @@
     height: auto;
     border: solid 3px black;
 
+}
+
+.imagen-logo{
+    width: 55px;
+    height: auto;
+}
+
+/*detalle de un juego*/
+
+article{
+    display: flex;
+    justify-content: space-evenly;
+}
+.imagen-objeto #imagen-detalle{
+    width: 300px;
 }

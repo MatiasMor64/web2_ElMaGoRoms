@@ -13,6 +13,11 @@ class juegoModel {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function getJuego($ID_juego){
+        $query = $this->db->prepare('SELECT * FROM juegos WHERE ID_juego = ?');
+        $query->execute([$ID_juego]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
     
 }
 
