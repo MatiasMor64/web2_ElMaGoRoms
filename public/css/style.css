@@ -1,0 +1,19 @@
+.seccion-juegos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: space-evenly;
+}
+
+.objeto{
+    align-items: center;
+    text-align: center;
+    border: solid 2px black;
+    padding: 5px;
+}
+
+.imagen-objeto{
+    width: 150px;
+    height: auto;
+    border: solid 3px black;
+
+}

@@ -1,6 +1,5 @@
 <?php
-require_once 'noticias.php';
-require_once 'about.php';
+require_once './app/controllers/juego_controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -32,12 +31,14 @@ $params = explode('/', $action);
     
 switch ($params[0]) {
     case 'home':
-        showHome();
+        $juegoController= new juegoController();
+        $juegoController-> showHome();
         break;
     case 'juego':
         if (isset($params[1])){
             $id= $params[1];
-            showJuego($params[1]);
+            $juegoController= new juegoController();
+            $juegoController-> showJuego($params[1]);
         }
         break;
     case 'listaPlataforma':
