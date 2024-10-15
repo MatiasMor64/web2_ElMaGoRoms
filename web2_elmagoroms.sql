@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2024 a las 20:57:07
+-- Tiempo de generación: 16-10-2024 a las 01:44:18
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -63,11 +63,14 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`ID_juego`, `nombre`, `imagen`, `descripción`, `ID_usuario`, `ID_plat`, `ID_cat`) VALUES
-(1, 'The Legend of Zelda Twilight Princess', 'https://static.wikia.nocookie.net/zelda/images/6/6c/The_Legend_of_Zelda_Twilight_Princess_Portada_%28Wii%29.png/revision/latest/scale-to-width/360?cb=', 'En The Legend of Zelda: Twilight Princess, Link se embarca en una épica aventura en un mundo sumido en la oscuridad. Transformado en lobo y acompañado por una misteriosa aliada, debe rescatar el reino de Hyrule de la amenaza de la sombra y restaurar la luz. Acción, magia y misterio en un clásico ino', 1, 2, 1),
+(1, 'The Legend of Zelda Twilight Princess', 'https://bdjogos.com.br/capas/3778-the-legend-of-zelda-twilight-princess-wii-capa-1.jpg', 'En The Legend of Zelda: Twilight Princess, Link se embarca en una épica aventura en un mundo sumido en la oscuridad. Transformado en lobo y acompañado por una misteriosa aliada, debe rescatar el reino de Hyrule de la amenaza de la sombra y restaurar la luz. Acción, magia y misterio en un clásico ino', 1, 2, 1),
 (2, 'God of War ', 'https://i.3djuegos.com/juegos/3569/god_of_war/fotos/ficha/god_of_war-2736533.jpg', '\"God of War\" para PS2 sigue la historia de Kratos, un guerrero espartano que busca venganza contra Ares, el dios de la guerra, tras ser traicionado. Atraviesa mitologías griegas, enfrentando criaturas y resolviendo acertijos, mientras busca redención. Con una jugabilidad fluida y combates intensos, ', 1, 1, 2),
 (3, 'Monster Hunter ', 'https://i.redd.it/ax8r7ziupb8c1.jpeg', '\"Monster Hunter\" para PS2 es un juego de acción y rol donde los jugadores asumen el rol de cazadores en un mundo lleno de criaturas gigantes. Los jugadores deben rastrear, cazar y recolectar materiales de monstruos para crear armas y armaduras. La cooperación en línea y la estrategia son clave para ', 1, 1, 1),
 (6, 'Dragon Ball Z Budokai Tenkaichi 3', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', '\"Dragon Ball Z: Budokai Tenkaichi 3\" para Wii es un juego de lucha que ofrece un extenso elenco de personajes de la franquicia. Con combates 3D, los jugadores pueden realizar ataques especiales y transformaciones icónicas. El modo historia recorre las sagas de la serie, mientras que el multijugador ', 2, 2, 4),
-(10, 'Super Mario Galaxy', 'https://m.media-amazon.com/images/I/71gnh672D1L.jpg', '\"Super Mario Galaxy\" para Wii es un juego de plataformas en 3D donde Mario viaja por distintos planetas para rescatar a la Princesa Peach de Bowser. Con mecánicas innovadoras de gravedad, los jugadores saltan entre mundos únicos, resuelven acertijos y recolectan estrellas. La jugabilidad, el diseño visual y la música crean una experiencia mágica.', 3, 2, 1);
+(10, 'Super Mario Galaxy', 'https://m.media-amazon.com/images/I/71gnh672D1L.jpg', '\"Super Mario Galaxy\" para Wii es un juego de plataformas en 3D donde Mario viaja por distintos planetas para rescatar a la Princesa Peach de Bowser. Con mecánicas innovadoras de gravedad, los jugadores saltan entre mundos únicos, resuelven acertijos y recolectan estrellas. La jugabilidad, el diseño visual y la música crean una experiencia mágica.', 3, 2, 1),
+(13, 'Dragon Ball Z Budokai Tenkaichi 4', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', '\"Dragon Ball Z: Budokai Tenkaichi 3\" para Wii es un juego de lucha que ofrece un extenso elenco de personajes de la franquicia. Con combates 3D, los jugadores pueden realizar ataques especiales y transformaciones icónicas. El modo historia recorre las sagas de la serie, mientras que el multijugador ', 2, 2, 4),
+(14, 'God of War 2', 'https://i.3djuegos.com/juegos/3569/god_of_war/fotos/ficha/god_of_war-2736533.jpg', '\"God of War\" para PS2 sigue la historia de Kratos, un guerrero espartano que busca venganza contra Ares, el dios de la guerra, tras ser traicionado. Atraviesa mitologías griegas, enfrentando criaturas y resolviendo acertijos, mientras busca redención. Con una jugabilidad fluida y combates intensos, ', 1, 1, 2),
+(15, 'Monster Hunter Dos', 'https://i.redd.it/ax8r7ziupb8c1.jpeg', '\"Monster Hunter\" para PS2 es un juego de acción y rol donde los jugadores asumen el rol de cazadores en un mundo lleno de criaturas gigantes. Los jugadores deben rastrear, cazar y recolectar materiales de monstruos para crear armas y armaduras. La cooperación en línea y la estrategia son clave para ', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +164,7 @@ ALTER TABLE `categorías`
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `ID_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
