@@ -16,6 +16,6 @@ La base de datos está compuesta por las siguientes entidades principales:
 - **Usuarios y Permisos**: Los usuarios tienen acceso a modificar los datos de la base de datos, y sus roles están definidos en la tabla `usuarios`.
 
 ## Diagrama de la Base de Datos
-![Diagrama de la base de datos](img/web2_elmagoroms.png)
+![Diagrama de la base de datos](public/img/web2_elmagoroms.png)
 ## Autor
 Este proyecto fue realizado por Matías Morcillo (matiasmorcillo128@gmail.com) y Iago Medina Durán (iagomduran@gmail.com).
