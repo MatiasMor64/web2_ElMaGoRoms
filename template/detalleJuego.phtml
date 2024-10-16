@@ -6,6 +6,14 @@
             <h2>Descripcion</h2>
             <p class="descripcion"> <?php echo $juego->descripción; ?> </p>
         </div>
-        <img class="imagen-objeto" src=" <?php echo $juego->imagen; ?>" alt="img">
+        <img class="imagen-detalle" src=" <?php echo $juego->imagen; ?>" alt="img">
+    </article>
+    <article>
+        <div>
+            <h2> Descargar </h2>
+        </div>
+        <div>
+            <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
+        </div>
     </article>
 <?php require_once './template/layout/footer.phtml'; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 01:44:18
+-- Tiempo de generación: 17-10-2024 a las 00:16:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -52,7 +52,7 @@ CREATE TABLE `juegos` (
   `ID_juego` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `imagen` varchar(500) DEFAULT NULL,
-  `descripción` varchar(500) DEFAULT NULL,
+  `descripción` varchar(10000) DEFAULT NULL,
   `ID_usuario` int(11) NOT NULL,
   `ID_plat` int(11) NOT NULL,
   `ID_cat` int(11) NOT NULL
@@ -63,7 +63,7 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`ID_juego`, `nombre`, `imagen`, `descripción`, `ID_usuario`, `ID_plat`, `ID_cat`) VALUES
-(1, 'The Legend of Zelda Twilight Princess', 'https://bdjogos.com.br/capas/3778-the-legend-of-zelda-twilight-princess-wii-capa-1.jpg', 'En The Legend of Zelda: Twilight Princess, Link se embarca en una épica aventura en un mundo sumido en la oscuridad. Transformado en lobo y acompañado por una misteriosa aliada, debe rescatar el reino de Hyrule de la amenaza de la sombra y restaurar la luz. Acción, magia y misterio en un clásico ino', 1, 2, 1),
+(1, 'The Legend of Zelda Twilight Princess', 'https://bdjogos.com.br/capas/3778-the-legend-of-zelda-twilight-princess-wii-capa-1.jpg', 'The Legend of Zelda: Twilight Princess es un juego de aventura y acción, parte de la famosa franquicia The Legend of Zelda, desarrollado por Nintendo y lanzado en 2006 para GameCube y Wii. Es conocido por su estilo más oscuro y realista, y por el uso de mecánicas de transformación de Link en un lobo, así como por la introducción de un mundo crepuscular paralelo que contrasta con el reino de Hyrule. El juego sigue a Link, un joven granjero de la pacífica aldea de Ordon. Un día, Hyrule cae bajo la influencia de una dimensión oscura llamada \"Crepúsculo\", que cubre el reino en sombras. Al ser arrastrado a esta dimensión, Link se transforma en un lobo, lo que le permite interactuar de una manera especial con el mundo del Crepúsculo. Pronto conoce a Midna, una misteriosa criatura que lo guía en su viaje para restaurar el equilibrio en el reino. Juntos, Link y Midna deben encontrar las piezas de la \"Fused Shadow\" y liberar a los espíritus guardianes de Hyrule, quienes han sido derrotados por la invasión del Crepúsculo. Midna, que pertenece al Reino Crepuscular, tiene sus propios motivos para detener al villano Zant, un tirano que se ha apoderado del trono en su mundo y está utilizando el poder del Crepúsculo para esclavizar a Hyrule. A medida que la historia avanza, Link y Midna descubren que Zant es solo un peón de un mal aún mayor: Ganondorf, el archienemigo clásico de la serie, quien busca dominar tanto Hyrule como el Reino Crepuscular.', 1, 2, 1),
 (2, 'God of War ', 'https://i.3djuegos.com/juegos/3569/god_of_war/fotos/ficha/god_of_war-2736533.jpg', '\"God of War\" para PS2 sigue la historia de Kratos, un guerrero espartano que busca venganza contra Ares, el dios de la guerra, tras ser traicionado. Atraviesa mitologías griegas, enfrentando criaturas y resolviendo acertijos, mientras busca redención. Con una jugabilidad fluida y combates intensos, ', 1, 1, 2),
 (3, 'Monster Hunter ', 'https://i.redd.it/ax8r7ziupb8c1.jpeg', '\"Monster Hunter\" para PS2 es un juego de acción y rol donde los jugadores asumen el rol de cazadores en un mundo lleno de criaturas gigantes. Los jugadores deben rastrear, cazar y recolectar materiales de monstruos para crear armas y armaduras. La cooperación en línea y la estrategia son clave para ', 1, 1, 1),
 (6, 'Dragon Ball Z Budokai Tenkaichi 3', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', '\"Dragon Ball Z: Budokai Tenkaichi 3\" para Wii es un juego de lucha que ofrece un extenso elenco de personajes de la franquicia. Con combates 3D, los jugadores pueden realizar ataques especiales y transformaciones icónicas. El modo historia recorre las sagas de la serie, mientras que el multijugador ', 2, 2, 4),
@@ -100,8 +100,8 @@ INSERT INTO `plataformas` (`ID_plat`, `consola`) VALUES
 CREATE TABLE `usuarios` (
   `ID_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `contraseña` varchar(100) NOT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `permisos` int(11) NOT NULL DEFAULT 1 COMMENT 'niveles de acceso a elementos de desarrollador'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -109,11 +109,12 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`ID_usuario`, `nombre`, `email`, `contraseña`, `permisos`) VALUES
+INSERT INTO `usuarios` (`ID_usuario`, `nombre`, `usuario`, `password`, `permisos`) VALUES
 (1, 'Matías', 'matiasmorcillo128@gmail.com', '123', 2),
 (2, 'Iago', 'iagomduran@gmail.com', '456', 2),
 (3, 'Benjamín', 'benjapro777@gmail.com', '123', 1),
-(4, 'Lucas', 'lucasretro27@yahoo.com', '456', 1);
+(4, 'Lucas', 'lucasretro27@yahoo.com', '456', 1),
+(6, 'Tester', 'webadmin', 'admin', 1);
 
 --
 -- Índices para tablas volcadas
@@ -148,7 +149,7 @@ ALTER TABLE `plataformas`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID_usuario`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -176,7 +177,7 @@ ALTER TABLE `plataformas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

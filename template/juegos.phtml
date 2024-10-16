@@ -5,6 +5,7 @@
             <img class="imagen-objeto" id="imagen-detalle" src=" <?php echo $juego->imagen; ?>" alt="img">
             <h1> <?php echo $juego->nombre; ?> </h1>
             <p> <?php echo $juego->ID_plat; ?></p>
+            <a href="<?= BASE_URL ?>juego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Ver Detalles</a>
         </div>
     <?php } ?>
 </article>
