@@ -13,9 +13,9 @@ function __construct(){
 
 function showHome(){
     $juegos= $this->model->getJuegos();
-    /*$categorias= $this->model->getCategorias($juegos);
-    $plataformas= $this->model->getPlataformas($juegos); */
-    return $this->view->showHome($juegos /*, $categorias, $plataformas*/); 
+    $categorias= $this->model->getCategorias($juegos);
+    $plataformas= $this->model->getPlataformas($juegos);
+    return $this->view->showHome($juegos, $categorias, $plataformas); 
 }
 
 function showJuego($ID_juego){

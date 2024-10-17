@@ -1,6 +1,6 @@
 <?php
 class juegoView{
-    function showHome($juegos/*, $categorias, $plataformas*/){
+    function showHome($juegos, $categorias, $plataformas){
         require_once "./template/juegos.phtml";
     }
 

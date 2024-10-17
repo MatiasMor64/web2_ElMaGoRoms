@@ -36,7 +36,7 @@ class juegoModel {
     }
 
 // Adquirir todas las consolas y plataformas para el menu de inicio: 
-/*
+
     function getCategorias($juegos){
         $query = $this->db->prepare('SELECT * FROM categorías');
         $query->execute();
@@ -50,6 +50,5 @@ class juegoModel {
         $plataformas= $query->fetch(PDO::FETCH_OBJ);
         return $plataformas;
     }
-*/
 }
 

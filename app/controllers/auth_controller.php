@@ -27,16 +27,42 @@ class authController{
         $user= $_POST['user'];
         $password= $_POST['password'];
 
-        $userFromDB= $this->model->getUserByUsername($user);
-        
-        if(password_verify($password, $userFromDB->password)){
+        $userFromDB= $this->model->getUserByUsername($user);        
+        if($userFromDB && password_verify($password, $userFromDB->password)){
             $_SESSION['ID_USER']= $userFromDB->ID_usuario;
             $_SESSION['USER']= $userFromDB->usuario;
             $_SESSION['LAST_ACTIVITY']= time();
 
             header('Location: ' . BASE_URL);
+            exit;
         } else{
             return $this->view->showLogin('Credenciales Incorrectas');
+        }
+    }
+
+    function showSignup(){
+        return $this->view->showSignup();
+    }
+
+    function signup(){
+        if(!isset($_POST['user']) || (empty($_POST['user']))){
+            return $this->view->showSignup('falta completar el nombre de usuario, intentelo de nuevo');
+        }
+
+        if(!isset($_POST['password']) || (empty($_POST['password']))){
+            return $this->view->showSignup('falta completar la contraseña, intentelo de nuevo');
+        }
+
+
+        $user= $_POST['user'];
+        $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        $userCreated = $this->model->createUser($user, $password);
+        
+        if ($userCreated) {
+            header('Location: ' . BASE_URL . 'showLogin'); // Redirigir al login después de registrarse
+        } else {
+            return $this->view->showSignup('Usuario ya registrado');
         }
     }
 

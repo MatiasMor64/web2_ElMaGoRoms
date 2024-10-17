@@ -23,6 +23,8 @@ mostrar lista cate  ->
 login en pagina     ->  showLogin; (muestra el inicio de sesion)
 login               ->  login; (conecta con la base de datos y checkea si el usuario es el correcto)
 logout              ->
+mostrar signup      ->  showSignup; (muestra el signup)
+crear usuario       ->  signup; (crea un usuario)
 crear juego         ->
 crear categoria     ->               
 crear plataforma    ->               
@@ -61,6 +63,14 @@ switch ($params[0]) {
     case 'login':
         $controller= new authController();
         $controller-> login();
+        break;
+    case 'showSignup':
+        $controller= new authController();
+        $controller-> showSignup();
+        break;
+    case 'signup':
+        $controller= new authController();
+        $controller-> signup();
         break;
     case 'logout':
     
