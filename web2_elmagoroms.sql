@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 00:16:45
+-- Tiempo de generación: 18-10-2024 a las 01:47:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -114,7 +114,8 @@ INSERT INTO `usuarios` (`ID_usuario`, `nombre`, `usuario`, `password`, `permisos
 (2, 'Iago', 'iagomduran@gmail.com', '456', 2),
 (3, 'Benjamín', 'benjapro777@gmail.com', '123', 1),
 (4, 'Lucas', 'lucasretro27@yahoo.com', '456', 1),
-(6, 'Tester', 'webadmin', 'admin', 1);
+(7, '', 'dada', '$2y$10$zxB025TXzLgC5IXHGf9ZMeHFtNSv4VIFkp7gQLG8fAz/e6Lvufun6', 1),
+(8, '', 'webadmin', '$2y$10$n.qitqXRLytMnpS0WstSCu1EP5dw1FzeTE3Pj8NDCCQjOTfUBC.yu', 1);
 
 --
 -- Índices para tablas volcadas
@@ -177,7 +178,7 @@ ALTER TABLE `plataformas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
