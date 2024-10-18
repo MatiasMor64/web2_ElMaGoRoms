@@ -51,10 +51,26 @@ switch ($params[0]) {
         }
         break;
     case 'listaPlataforma':
-        
+        $juegoController = new juegoController();
+        $juegoController->showPlataformas();
         break;
-    case 'listaGenero':
-        
+    case 'listaCategoria':
+        $juegoController = new juegoController();
+        $juegoController->showCategorias();
+        break;
+    case 'juegosPorPlataforma':
+        if (isset($params[1])) {
+            $juegoController = new juegoController();
+            $ID_plataforma = $params[1];
+            $juegoController->showJuegosPorPlataforma($ID_plataforma);
+        }
+        break;
+    case 'juegosPorCategoria':
+        if (isset($params[1])) {
+            $juegoController = new juegoController();
+            $ID_categoria = $params[1];
+            $juegoController->showJuegosPorCategoria($ID_categoria);
+        }
         break;
     case 'showLogin':
         $controller= new authController();
