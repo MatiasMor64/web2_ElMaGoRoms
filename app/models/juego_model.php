@@ -89,9 +89,9 @@ class juegoModel {
 
     //crear, modificar y borrar juegos en la base de datos:
 
-    public function crearJuego($nombre, $imagen, $descripción) { 
-        $query = $this->db->prepare('INSERT INTO juegos(titulo, descripcion, prioridad, finalizada) VALUES (?, ?, ?, ?)');
-        $query->execute([$nombre, $imagen, $descripción]);
+    public function crearJuego($nombre, $imagen, $descripción, $ID_usuario, $ID_plat, $ID_cat) { 
+        $query = $this->db->prepare('INSERT INTO juegos(nombre, imagen, descripción, ID_usuario, ID_plat, ID_cat) VALUES (?, ?, ?, ?, ?, ?)');
+        $query->execute([$nombre, $imagen, $descripción, $ID_usuario, $ID_plat, $ID_cat]);
         
         $id = $this->db->lastInsertId();
         return $id;
@@ -129,5 +129,6 @@ class juegoModel {
         $query = $this->db->prepare('UPDATE categorias SET nombre = ?, imagen_url = ? WHERE id_categoria = ?');
         return $query->execute([$nombre_categoria, $imagen_url, $id_categoria]);
     }
+
 }
 

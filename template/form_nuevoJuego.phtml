@@ -16,7 +16,18 @@
         <input type="text" name="descripción" class="form-control" id="descripción" placeholder="Descripción" required>
     </div>
     <div class="mb-3">
-    <select name="categoria" id="categoria">
+        <label for="ID_usuario" class="form-label">ID_usuario</label>
+        <input type="number" name="ID_usuario" class="form-control" id="ID_usuario" placeholder="ID_usuario" required>
+    </div>
+    <div class="mb-3">
+        <label for="ID_plat" class="form-label">ID_plat</label>
+        <input type="number" name="ID_plat" class="form-control" id="ID_plat" placeholder="ID_plat" required>
+    </div>
+    <div class="mb-3">
+        <label for="ID_cat" class="form-label">ID_cat</label>
+        <input type="number" name="ID_cat" class="form-control" id="ID_cat" placeholder="ID_cat" required>
+    </div>
+    <?php /*<select name="categoria" id="categoria">
 
         <?php foreach($categoria as $cat){ ?>
                 <?php echo $cat-> categoría; ?>
@@ -30,7 +41,7 @@
                 <?php echo $plat->consola; ?>
             </select>
         <?php } ?>
-    </div>
+    </div>  */ ?>
     <button type="submit" class="btn btn-primary">Agregar Juego Nuevo</button>
 </form>
 <?php

@@ -80,13 +80,13 @@ switch ($params[0]) {
         break;
     case 'showNuevoJuego':
         sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
+        //verifyAuthMiddleware($res);
         $controller = new juegoController($res);
         $controller->showCrearJuego();
         break;
     case 'nuevoJuego':
         sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
+        //verifyAuthMiddleware($res);
         $controller = new juegoController($res);
         $controller->crearJuego();
         break;

@@ -32,7 +32,7 @@ class authController{
             $_SESSION['id_user']= $userAuthDB->ID_usuario;
             $_SESSION['usuario']= $userAuthDB->usuario;
             $_SESSION['LAST_ACTIVITY']= time();
-
+            
             header('Location: ' . BASE_URL);
             exit;
         } else{

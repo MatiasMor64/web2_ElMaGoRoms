@@ -63,12 +63,27 @@ function crearJuego(){
         return $this->view->showError('Falta agregar una descripcion');
     }
 
+    if (!isset($_POST['ID_usuario']) || empty($_POST['ID_usuario'])) {
+        return $this->view->showError('Falta agregar una id de usuario');
+    }
+
+    if (!isset($_POST['ID_plat']) || empty($_POST['ID_plat'])) {
+        return $this->view->showError('Falta agregar una id de plataforma');
+    }
+
+    if (!isset($_POST['ID_cat']) || empty($_POST['ID_cat'])) {
+        return $this->view->showError('Falta agregar una id de categoria');
+    }
+
     $nombre = $_POST['nombre'];
     $imagen = $_POST['imagen'];
     $descripción = $_POST['descripción'];
+    $ID_usuario = $_POST['ID_usuario'];
+    $ID_plat = $_POST['ID_plat'];
+    $ID_cat = $_POST['ID_cat'];
 
 
-    $id = $this->model->crearJuego($nombre, $imagen, $descripción);
+    $id = $this->model->crearJuego($nombre, $imagen, $descripción, $ID_usuario, $ID_plat, $ID_cat);
 
     // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
     header('Location: ' . BASE_URL);
