@@ -1,5 +1,8 @@
 <?php
+
 class authView{
+    private $user= null;
+
     public function showLogin($error = ''){
         require './template/form_login.phtml';
     }

@@ -16,21 +16,21 @@ class authController{
     }
 
     public function login(){
-        if(!isset($_POST['user']) || (empty($_POST['user']))){
+        if((empty($_POST['usuario']))){
             return $this->view->showLogin('falta completar el nombre de usuario, intentelo de nuevo');
         }
 
-        if(!isset($_POST['password']) || (empty($_POST['password']))){
+        if((empty($_POST['password']))){
             return $this->view->showLogin('falta completar la contraseña, intentelo de nuevo');
         }
 
-        $user= $_POST['user'];
+        $usuario= $_POST['usuario'];
         $password= $_POST['password'];
 
-        $userFromDB= $this->model->getUserByUsername($user);        
-        if($userFromDB && password_verify($password, $userFromDB->password)){
-            $_SESSION['ID_USER']= $userFromDB->ID_usuario;
-            $_SESSION['USER']= $userFromDB->usuario;
+        $userAuthDB= $this->model->getUserByUsername($usuario);        
+        if($userAuthDB && password_verify($password, $userAuthDB->password)){
+            $_SESSION['id_user']= $userAuthDB->ID_usuario;
+            $_SESSION['usuario']= $userAuthDB->usuario;
             $_SESSION['LAST_ACTIVITY']= time();
 
             header('Location: ' . BASE_URL);
@@ -45,7 +45,7 @@ class authController{
     }
 
     function signup(){
-        if(!isset($_POST['user']) || (empty($_POST['user']))){
+        if(!isset($_POST['usuario']) || (empty($_POST['usuario']))){
             return $this->view->showSignup('falta completar el nombre de usuario, intentelo de nuevo');
         }
 
@@ -54,13 +54,13 @@ class authController{
         }
 
 
-        $user= $_POST['user'];
+        $usuario= $_POST['usuario'];
         $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $userCreated = $this->model->createUser($user, $password);
+        $userCreated = $this->model->createUser($usuario, $password);
         
         if ($userCreated) {
-            header('Location: ' . BASE_URL . 'showLogin'); // Redirigir al login después de registrarse
+            header('Location: ' . BASE_URL . 'showLogin');
         } else {
             return $this->view->showSignup('Usuario ya registrado');
         }

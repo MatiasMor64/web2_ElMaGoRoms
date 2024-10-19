@@ -86,5 +86,48 @@ class juegoModel {
         $query->execute([$ID_plataforma]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    //crear, modificar y borrar juegos en la base de datos:
+
+    public function crearJuego($nombre, $imagen, $descripción) { 
+        $query = $this->db->prepare('INSERT INTO juegos(titulo, descripcion, prioridad, finalizada) VALUES (?, ?, ?, ?)');
+        $query->execute([$nombre, $imagen, $descripción]);
+        
+        $id = $this->db->lastInsertId();
+        return $id;
+    }
+    
+
+    function showCategories() {
+        $query = $this->db->prepare("SELECT * FROM categorias");
+        $query->execute();
+        $categories = $query->fetchAll(PDO::FETCH_OBJ);
+        return $categories;
+    }
+
+    // Agregar una nueva categoría
+    function addCategory($nombre_categoria, $imagen_url) {
+        $query = $this->db->prepare("INSERT INTO categorias (nombre, imagen_url) VALUES (?, ?)");
+        $query->execute([$nombre_categoria, $imagen_url]);
+    }
+
+    // Eliminar una categoría
+    function deleteCategory($id_categoria) {
+        $query = $this->db->prepare("DELETE FROM categorias WHERE id_categoria = ?");
+        return $query->execute([$id_categoria]);
+    }
+
+    // Buscar categoría por ID
+    function getCategoryById($id_categoria) {
+        $query = $this->db->prepare('SELECT * FROM categorias WHERE id_categoria = ?');
+        $query->execute([$id_categoria]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    // Actualizar una categoría
+    function updateCategory($id_categoria, $nombre_categoria, $imagen_url) {
+        $query = $this->db->prepare('UPDATE categorias SET nombre = ?, imagen_url = ? WHERE id_categoria = ?');
+        return $query->execute([$nombre_categoria, $imagen_url, $id_categoria]);
+    }
 }
 

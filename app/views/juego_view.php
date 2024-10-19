@@ -1,5 +1,9 @@
 <?php
 class juegoView{
+    private $user = null;
+    public function __construct($user){
+        $this->user = $user;
+    }
     function showHome($juegos){//, $categorias, $plataformas){
         require_once "./template/juegos.phtml";
     }
@@ -23,4 +27,13 @@ class juegoView{
     function showJuegosPorPlataforma($juegos) {
         require_once "./template/juegosPorPlataforma.phtml";
     }
+
+    function showCrearJuego($categoria, $plataforma){
+        require_once "./template/form_nuevoJuego.phtml";
+    }
+
+    public function showError($error) {
+        require './template/error.phtml';
+    }
+
 }
