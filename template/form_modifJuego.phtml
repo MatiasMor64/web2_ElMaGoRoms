@@ -2,7 +2,7 @@
     require_once 'template/layout/header.phtml';
 ?>
 <form method="POST" action="nuevoJuego" class="container mt-4">
-    <h2>Crear un nuevo juego: </h2>
+    <h2>Modificar el juego: <?php echo $juego->nombre ?> </h2>
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del juego" required>
@@ -38,7 +38,7 @@
 
     </select> 
         </div>
-    <button type="submit" class="btn btn-primary">Agregar Juego Nuevo</button>
+    <button type="submit" class="btn btn-primary">Agregar Juego Modificado</button>
     <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
 </form>
 

@@ -32,6 +32,10 @@ class juegoView{
         require_once "./template/form_nuevoJuego.phtml";
     }
 
+    function showModifJuego($categoria, $plataforma, $juego){
+        require_once "./template/form_modifJuego.phtml";
+    }
+
     public function showError($error) {
         require './template/error.phtml';
     }

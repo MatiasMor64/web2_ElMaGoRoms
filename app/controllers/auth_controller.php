@@ -29,6 +29,7 @@ class authController{
 
         $userAuthDB= $this->model->getUserByUsername($usuario);        
         if($userAuthDB && password_verify($password, $userAuthDB->password)){
+            session_start();
             $_SESSION['id_user']= $userAuthDB->ID_usuario;
             $_SESSION['usuario']= $userAuthDB->usuario;
             $_SESSION['LAST_ACTIVITY']= time();

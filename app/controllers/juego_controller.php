@@ -63,10 +63,6 @@ function crearJuego(){
         return $this->view->showError('Falta agregar una descripcion');
     }
 
-    if (!isset($_POST['ID_usuario']) || empty($_POST['ID_usuario'])) {
-        return $this->view->showError('Falta agregar una id de usuario');
-    }
-
     if (!isset($_POST['ID_plat']) || empty($_POST['ID_plat'])) {
         return $this->view->showError('Falta agregar una id de plataforma');
     }
@@ -78,7 +74,7 @@ function crearJuego(){
     $nombre = $_POST['nombre'];
     $imagen = $_POST['imagen'];
     $descripción = $_POST['descripción'];
-    $ID_usuario = $_POST['ID_usuario'];
+    $ID_usuario = $_SESSION['id_user'];
     $ID_plat = $_POST['ID_plat'];
     $ID_cat = $_POST['ID_cat'];
 
@@ -87,6 +83,19 @@ function crearJuego(){
 
     // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
     header('Location: ' . BASE_URL);
+
+}
+
+public function borrarJuego($ID_juego){
+    $juego = $this->model->getJuego($ID_juego);
+
+        if (!$juego) {
+            return $this->view->showError("No existe el juego de id =$ID_juego");
+        }
+
+        $this->model->borrarJuego($ID_juego);
+
+        header('Location: ' . BASE_URL);
 
 }
 

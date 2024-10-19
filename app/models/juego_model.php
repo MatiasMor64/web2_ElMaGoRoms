@@ -96,6 +96,12 @@ class juegoModel {
         $id = $this->db->lastInsertId();
         return $id;
     }
+
+    public function borrarJuego($ID_juego) {
+        $query = $this->db->prepare('DELETE FROM juegos WHERE ID_juego = ?');
+        $query->execute([$ID_juego]);
+    }
+
     
 
     function showCategories() {
@@ -125,7 +131,7 @@ class juegoModel {
     }
 
     // Actualizar una categoría
-    function updateCategory($id_categoria, $nombre_categoria, $imagen_url) {
+     function updateCategory($id_categoria, $nombre_categoria, $imagen_url) {
         $query = $this->db->prepare('UPDATE categorias SET nombre = ?, imagen_url = ? WHERE id_categoria = ?');
         return $query->execute([$nombre_categoria, $imagen_url, $id_categoria]);
     }

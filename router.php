@@ -80,13 +80,13 @@ switch ($params[0]) {
         break;
     case 'showNuevoJuego':
         sessionAuthMiddleware($res);
-        //verifyAuthMiddleware($res);
+        verifyAuthMiddleware($res);
         $controller = new juegoController($res);
         $controller->showCrearJuego();
         break;
     case 'nuevoJuego':
         sessionAuthMiddleware($res);
-        //verifyAuthMiddleware($res);
+        verifyAuthMiddleware($res);
         $controller = new juegoController($res);
         $controller->crearJuego();
         break;
@@ -98,6 +98,10 @@ switch ($params[0]) {
         break;
     case 'borrarJuego':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $juegoController= new juegoController($res);
+            $ID_juego= $params[1];
+            $juegoController-> borrarJuego($ID_juego);
         break;
     case 'borrarCat':
         sessionAuthMiddleware($res);
@@ -107,6 +111,10 @@ switch ($params[0]) {
         break;
     case 'modifJuego':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $juegoController= new juegoController($res);
+            $ID_juego= $params[1];
+            $juegoController-> modifJuego($ID_juego);
         break;
     case 'modifCat':
         sessionAuthMiddleware($res);
