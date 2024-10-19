@@ -1,0 +1,21 @@
+<?php require_once './template/layout/header.phtml'; ?>
+    <article>
+        <div>
+            <h1> <?php echo $juego->nombre; ?> </h1>
+            <h2>Plataforma: <?php echo $plataforma->consola; ?></h2>
+            <h2>Categoria: <?php echo $categoria->categoría; ?></h2>
+            <h2>Descripcion: </h2>
+            <p class="descripcion"> <?php echo $juego->descripción; ?> </p>
+            <div>
+            <h2> Descargar </h2>
+            </div>
+        </div>
+        <img class="imagen-detalle" src=" <?php echo $juego->imagen; ?>" alt="img">
+    </article>
+    <article>
+        
+        <div>
+            <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
+        </div>
+    </article>
+<?php require_once './template/layout/footer.phtml'; ?>
