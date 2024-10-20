@@ -1,10 +1,12 @@
 <?php
-require_once './config.php';
+require_once './config/config.php';
 require_once './libs/response.php';
 
 require_once './app/middlewares/verify_auth_middleware.php';
 require_once './app/middlewares/session_auth.php';
 require_once './app/controllers/juego_controller.php';
+require_once './app/controllers/categoria_controller.php';
+require_once './app/controllers/plataforma_controller.php';
 require_once './app/controllers/auth_controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -21,41 +23,41 @@ $params = explode('/', $action);
 switch ($params[0]) {
     case 'home':
         sessionAuthMiddleware($res);
-        $juegoController= new juegoController($res);
-        $juegoController-> showHome();
+        $controller= new juegoController($res);
+        $controller-> showHome();
         break;
     case 'juego':
         sessionAuthMiddleware($res);
         if (isset($params[1])){
-            $juegoController= new juegoController($res);
+            $controller= new juegoController($res);
             $ID_juego= $params[1];
-            $juegoController-> showJuego($ID_juego);
+            $controller-> showJuego($ID_juego);
         }
         break;
     case 'listaPlataforma':
         sessionAuthMiddleware($res);
-        $juegoController = new juegoController($res);
-        $juegoController->showPlataformas();
+        $controller = new platController($res);
+        $controller->showPlataformas();
         break;
     case 'listaCategoria':
         sessionAuthMiddleware($res);
-        $juegoController = new juegoController($res);
-        $juegoController->showCategorias();
+        $controller = new catController($res);
+        $controller->showCategorias();
         break;
     case 'juegosPorPlataforma':
         sessionAuthMiddleware($res);
         if (isset($params[1])) {
-            $juegoController = new juegoController($res);
+            $controller = new platController($res);
             $ID_plataforma = $params[1];
-            $juegoController->showJuegosPorPlataforma($ID_plataforma);
+            $controller->showJuegosPorPlataforma($ID_plataforma);
         }
         break;
     case 'juegosPorCategoria':
         sessionAuthMiddleware($res);
         if (isset($params[1])) {
-            $juegoController = new juegoController($res);
+            $controller = new juegoController($res);
             $ID_categoria = $params[1];
-            $juegoController->showJuegosPorCategoria($ID_categoria);
+            $controller->showJuegosPorCategoria($ID_categoria);
         }
         break;
     case 'showLogin':
@@ -92,58 +94,85 @@ switch ($params[0]) {
         break;
     case 'nuevaCat':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $controller->crearCat();
+        break;
+    case 'showNuevaPlat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $controller->showNuevaPlat();
         break;
     case 'nuevaPlat':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $controller->crearPlat();
         break;
     case 'borrarJuego':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
-        $juegoController= new juegoController($res);
+        $controller= new juegoController($res);
             $ID_juego= $params[1];
-            $juegoController-> borrarJuego($ID_juego);
+            $controller-> borrarJuego($ID_juego);
         break;
     case 'borrarCat':
         sessionAuthMiddleware($res);
         break;
     case 'borrarPlat':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        break;
+    case 'showModifJuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new juegoController($res); 
+        $ID_juego = $params[1];
+        $controller->showModifJuego($ID_juego);
         break;
     case 'modifJuego':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
-        $juegoController= new juegoController($res);
-            $ID_juego= $params[1];
-            $juegoController-> modifJuego($ID_juego);
+        $controller = new juegoController($res);
+        $controller->modifJuego();
         break;
-    case 'modifCat':
+    case 'showModifPlat':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $ID_plataforma = $params[1];
+        $controller->showModifPlat($ID_plataforma);
         break;
     case 'modifPlat':
         sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $ID_plataforma = $params[1];
+        $controller->modifPlat($ID_plataforma);
         break;
-    default:
-        echo "404 not found";
-        break;
+
+    echo "404 not found";
+    break;
 }
 
 /* TABLA DE RUTEO:
 inicio/home         ->  showHome; (muestra todo a la vez)
 juego especifico    ->  showJuego; (muestra un juego en especifico)
-mostrar lista plata ->
-mostrar lista cate  ->
+mostrar lista plata ->  -
+mostrar lista cate  ->   -
 login en pagina     ->  showLogin; (muestra el inicio de sesion)
 login               ->  login; (conecta con la base de datos y checkea si el usuario es el correcto)
-logout              ->
+logout              ->  -
 mostrar signup      ->  showSignup; (muestra el signup)
 crear usuario       ->  signup; (crea un usuario)
-crear juego         ->
-crear categoria     ->               
+crear juego         ->  -
+crear categoria     ->                
 crear plataforma    ->               
-borrar juego        ->
+borrar juego        ->  -
 borrar categoria    ->
 borrar plataforma   ->
-modificar juego     ->
+modificar juego     ->  -
 modificar categoria ->
 modificar plataforma->
 */

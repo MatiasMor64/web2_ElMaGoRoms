@@ -17,27 +17,19 @@
     </div>
 
     <div class="mb-3">
-    <select class="form-control" name="ID_plat" required>
-        
-        <?php foreach($plataforma as $plat){ ?>
- 
-         <option type="number" id="ID_plat"  value=<?=$plat->ID_plat?>> <?=$plat->consola?> </option>
-
-        <?php } ?> 
-
-    </select> 
-        </div>
-        <div class="mb-3">
-     <select class="form-control" name="ID_cat" required>
-        
-        <?php foreach($categoria as $cat){ ?>
- 
-         <option type="number" id="ID_cat"  value=<?=$cat->ID_cat?>> <?=$cat->categoría?> </option>
-
-        <?php } ?> 
-
-    </select> 
-        </div>
+        <select class="form-control" name="ID_plat" required>
+            <?php foreach($plataforma as $plat){ ?>
+            <option type="number" id="ID_plat"  value=<?=$plat->ID_plat?>> <?=$plat->consola?> </option>
+            <?php } ?> 
+        </select> 
+    </div>
+    <div class="mb-3">
+        <select class="form-control" name="ID_cat" required>
+            <?php foreach($categoria as $cat){ ?>
+                <option type="number" id="ID_cat"  value=<?=$cat->ID_cat?>> <?=$cat->categoría?> </option>
+            <?php } ?> 
+        </select> 
+    </div>
     <button type="submit" class="btn btn-primary">Agregar Juego Nuevo</button>
     <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
 </form>

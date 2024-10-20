@@ -24,20 +24,15 @@ function showJuego($ID_juego){
     return $this->view->showDetail($juego, $categoria, $plataforma);
 }
 
-function showCategorias() {
-    $categorias = $this->model->getCategorias();
-    return $this->view->showCategorias($categorias);
-}
+
 
 function showPlataformas() {
     $plataformas = $this->model->getPlataformas();
     return $this->view->showPlataformas($plataformas);
 }
 
-function showJuegosPorCategoria($ID_categoria) {
-    $juegos = $this->model->getJuegosPorCategoria($ID_categoria);
-    return $this->view->showHome($juegos);
-}
+// no funca 
+
 
 function showJuegosPorPlataforma($ID_plataforma) {
     $juegos = $this->model->getJuegosPorPlataforma($ID_plataforma);
@@ -83,7 +78,36 @@ function crearJuego(){
 
     // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
     header('Location: ' . BASE_URL);
+}
 
+public function showModifJuego($ID_juego){
+    $juego = $this->model->getJuego($ID_juego);
+    $categoria = $this->model->getCategorias();
+    $plataforma = $this->model->getPlataformas();
+    $this->view->showModifJuego($categoria, $plataforma, $juego);
+}
+
+public function modifJuego() {
+    if (empty($_POST['ID_juego'])) {
+        return $this->view->showError('No se ha seleccionado un juego');
+    }
+
+    // Asegurarnos de que todos los campos sean correctos
+    $juegoModificado = [
+        'ID_juego' => $_POST['ID_juego'],
+        'nombre' => $_POST['nombre'],
+        'ID_cat' => $_POST['ID_cat'],
+        'ID_plat' => $_POST['ID_plat'], 
+        'descripcion' => $_POST['descripcion'],  // Corregido 'descripción' a 'descripcion' para evitar errores
+        'imagen' => $_POST['imagen'],
+        'ID_usuario' => $_SESSION['ID_usuario']     // Aseguramos de incluir ID_usuario si es necesario
+    ];
+
+    if ($this->model->modifJuego($juegoModificado)) {
+        header('Location: ' . BASE_URL . 'home');
+    } else {
+        return $this->view->showError('Error al modificar el juego');
+    }
 }
 
 public function borrarJuego($ID_juego){
@@ -97,32 +121,30 @@ public function borrarJuego($ID_juego){
 
         header('Location: ' . BASE_URL);
 
-}
+} 
 
-// Agregar una nueva categoría
-function createCategory($name, $image_url) {
-    $this->model->addCategory($name, $image_url);
-    header('Location: /categories');
-}
+/* public function modifJuego(){
+    if (empty($_POST['ID_juego'])) {
+        return $this->view->showError('No se ha seleccionado un juego');
+    }
 
-// Editar una categoría
-function editCategory($id, $name, $image_url) {
-    $this->model->updateCategory($id, $name, $image_url);
-    header('Location: /categories');
-}
+    $juegoModificado = [
+        'ID_juego' => $_POST['ID_juego'],
+        'nombre' => $_POST['nombre'],
+        'ID_cat' => $_POST['ID_cat'],
+        'ID_plat' => $_POST['ID_plat'], 
+        'descripcion' => $_POST['descripción'], 
+        'imagen' => $_POST['imagen']
+    ];
 
-// Eliminar una categoría
-function deleteCategory($id) {
-    $this->model->deleteCategory($id);
-    header('Location: /categories');
-}
+    if($this->model->modifJuego($juegoModificado['ID_juego'], $juegoModificado)){
+        header('Location:' . BASE_URL . 'home');
+    } else{
+        return $this->view->showError('Error al modificar el juego');
+    }
 
-// Mostrar formulario para editar
-function showEditForm($id) {
-    $category = $this->model->getCategoryById($id);
-    require 'views/editCategoryForm.phtml';
-}
-
+     
+} */
 
 
 

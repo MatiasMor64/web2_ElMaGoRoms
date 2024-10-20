@@ -1,47 +1,40 @@
 <?php
     require_once 'template/layout/header.phtml';
 ?>
-<form method="POST" action="nuevoJuego" class="container mt-4">
-    <h2>Modificar el juego: <?php echo $juego->nombre ?> </h2>
+<form method="POST" action="<?= BASE_URL ?>modifJuego" class="container mt-4"> <!-- Corrige el action a la ruta correcta -->
+    <h2>Modificar el juego: <?php echo $juego->nombre; ?> </h2>
+    <input type="hidden" name="ID_juego" value="<?= $juego->ID_juego; ?>"> <!-- Añade un campo oculto para el ID del juego -->
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del juego" required>
+        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del juego" value="<?= $juego->nombre; ?>" required>
     </div>
     <div class="mb-3">
         <label for="imagen" class="form-label">Imagen (URL)</label>
-        <input type="text" name="imagen" class="form-control" id="imagen" placeholder="Imagen a usar (agregar una URL)" required>
+        <input type="text" name="imagen" class="form-control" id="imagen" placeholder="Imagen a usar (agregar una URL)" value="<?= $juego->imagen; ?>" required>
     </div>
     <div class="mb-3">
         <label for="descripción" class="form-label">Descripción</label>
-        <input type="text" name="descripción" class="form-control" id="descripción" placeholder="Descripción" required>
+        <input type="text" name="descripción" class="form-control" id="descripción" placeholder="Descripción" value="<?= $juego->descripcion; ?>" required>
     </div>
-
     <div class="mb-3">
-    <select class="form-control" name="ID_plat" required>
-        
-        <?php foreach($plataforma as $plat){ ?>
- 
-         <option type="number" id="ID_plat"  value=<?=$plat->ID_plat?>> <?=$plat->consola?> </option>
-
-        <?php } ?> 
-
-    </select> 
-        </div>
-        <div class="mb-3">
-     <select class="form-control" name="ID_cat" required>
-        
-        <?php foreach($categoria as $cat){ ?>
- 
-         <option type="number" id="ID_cat"  value=<?=$cat->ID_cat?>> <?=$cat->categoría?> </option>
-
-        <?php } ?> 
-
-    </select> 
-        </div>
-    <button type="submit" class="btn btn-primary">Agregar Juego Modificado</button>
+        <label for="ID_plat" class="form-label">Plataforma</label>
+        <select class="form-control" name="ID_plat" required>
+            <?php foreach($plataforma as $plat) { ?>
+                <option value="<?= $plat->ID_plat ?>" <?= ($plat->ID_plat == $juego->ID_plat) ? 'selected' : ''; ?>><?= $plat->consola ?></option>
+            <?php } ?> 
+        </select> 
+    </div>
+    <div class="mb-3">
+        <label for="ID_cat" class="form-label">Categoría</label>
+        <select class="form-control" name="ID_cat" required>
+            <?php foreach($categoria as $cat) { ?>
+                <option value="<?= $cat->ID_cat ?>" <?= ($cat->ID_cat == $juego->ID_cat) ? 'selected' : ''; ?>><?= $cat->categoría ?></option>
+            <?php } ?> 
+        </select> 
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar Juego</button>
     <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
 </form>
-
 <?php
     require_once './template/layout/footer.phtml';
 ?>

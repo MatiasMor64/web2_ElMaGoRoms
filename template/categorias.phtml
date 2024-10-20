@@ -3,7 +3,7 @@
 <ul>
     <?php foreach ($categorias as $categoria): ?>
         <li>
-            <a href="<?= BASE_URL . 'juegosPorCategoria' . $categoria->ID_categoria ?>">
+            <a href="<?= BASE_URL?>juegosPorCategoria/ <?=$categoria->ID_categoria?> ?>">
                 <?= htmlspecialchars($categoria->categoría) ?>
             </a>
         </li>

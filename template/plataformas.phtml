@@ -4,13 +4,20 @@
 <ul>
     <?php foreach ($plataformas as $plataforma): ?>
         <li>
-        <a href="<?= BASE_URL . 'juegosPorPlataforma' . $plataforma->$ID_plataforma ?>">
+            <a href="<?= BASE_URL . 'juegosPorPlataforma' . $plataforma->$ID_plataforma ?>">
                 <?= htmlspecialchars($plataforma->consola) ?>
             </a>
+            <?php if($this->user): ?>
+                <a href="<?= BASE_URL . 'showEditPlat' . $plataforma->$ID_plataforma ?>">Editar la Plataforma </a>
+            <?php endif; ?>
         </li>
     <?php endforeach; ?>
+    <?php if($this->user): ?>
+        <a href='<?= BASE_URL ?>showNuevaPlat' class='btn btn-primary'>Crear una nueva plataforma</a>
+    <?php endif; ?>
 </ul>
-<a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
+<a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menú principal</a>
 
 
 <?php require_once "./template/layout/footer.phtml"; ?>
+

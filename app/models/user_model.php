@@ -1,11 +1,8 @@
 <?php
 
-class userModel {
-    private $db;
+require_once './app/models/roms_model.php';
 
-    public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=web2_elmagoroms;charset=utf8', 'root', '');
-    }
+class userModel extends romsModel {
 
     function getUserByUsername($usuario){
         $query = $this->db->prepare('SELECT * FROM usuarios WHERE usuario = :usuario');
