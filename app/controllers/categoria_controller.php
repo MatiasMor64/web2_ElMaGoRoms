@@ -49,16 +49,21 @@ class catController {
         $this->view->showModifCat($categoria);
     }
 
-    public function modifCat($ID_categoria) {
-        if (!isset($_POST['consola']) || empty(trim($_POST['consola']))) {
-            return $this->view->showError('Falta completar el nombre de la categoría.');
+    public function modifCat() {
+        if (empty($_POST['ID_cat'])) {
+            return $this->view->showError('No se ha seleccionado una categoría');
         }
 
-        $consola = $_POST['consola'];
-        $this->model->modifCat($ID_categoria, $consola);
-
-        header('Location: '. BASE_URL. 'listaCategoria');
-        exit();
+        $generoModif = [
+            'ID_cat' => $_POST['ID_cat'],
+            'categoría' => $_POST['categoría']
+        ]; 
+        
+        if($this->model->modifCat($generoModif)){
+            header('Location: ' . BASE_URL . 'listaCategoria');
+        } else {
+            return $this->view->showError('Error al modificar la categoría');
+        }
     }
 
     public function showBorrarCat($ID_categoria){

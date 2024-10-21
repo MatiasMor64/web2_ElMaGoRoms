@@ -38,21 +38,25 @@ class categoriaModel extends romsModel {
         return $id;
     }
 
-    // Actualizar una categoría
-    public function updateCategoria($id_categoria, $nombre_categoria, $imagen_url) {
-        $query = $this->db->prepare('UPDATE categorias SET categoría = ?, imagen_url = ? WHERE ID_cat = ?');
-        return $query->execute([$nombre_categoria, $imagen_url, $id_categoria]);
-    }
-
-    public function modifCat($ID_categoria, $consola) {
-        $query = $this->db->prepare('UPDATE categorías SET consola = ? WHERE ID_plat = ?');
-        return $query->execute([$consola, $ID_categoria]);
-    }
-
     public function borrarCat($ID_categoria) {
         $query = $this->db->prepare("DELETE FROM juegos WHERE ID_cat = ?");
         $query->execute([$ID_categoria]);
         $query = $this->db->prepare("DELETE FROM categorías WHERE ID_cat = ?");
         return $query->execute([$ID_categoria]);
     }
+
+    public function modifCat($generoModif) {
+        if (!is_array($generoModif)) {
+            throw new Exception('Se esperaba un arreglo en lugar de una cadena u otro tipo de dato.');
+        }
+        
+        $query = $this->db->prepare('UPDATE categorías SET categoría = ? WHERE ID_cat = ?');
+        
+        return $query->execute([
+            $generoModif['categoría'],
+            $generoModif['ID_cat']
+        ]);
+    }
+
+    
 }

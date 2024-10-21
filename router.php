@@ -196,17 +196,9 @@ switch ($params[0]) {
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new catController($res);
-        $ID_categoria = $params[1];
-        $controller->modifCat($ID_categoria);
+        $controller->modifCat();
         break;
-        
-    case 'showModifCat':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        $controller = new catController($res);
-        $ID_plataforma = $params[1];
-        $controller->showModifCat($ID_categoria);
-        break;
+
     case 'showBorrarCat':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);

@@ -58,8 +58,9 @@ class platController {
             'ID_plat' => $_POST['ID_plat'],
             'consola' => $_POST['consola']
         ]; 
+
         if($this->model->modifPlat($consolaModif)){
-            header('Location: ' . BASE_URL . 'home');
+            header('Location: ' . BASE_URL . 'listaPlataforma');
         } else {
             return $this->view->showError('Error al modificar la consola');
         }
