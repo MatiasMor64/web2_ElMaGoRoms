@@ -1,0 +1,13 @@
+<?php require_once './template/layout/header.phtml'; ?>
+
+<div class='no-juegos-message'>
+    <h1><?= htmlspecialchars($mensaje) ?></h1>        
+</div>
+<div>
+    <p>Por favor, revisa otros items o vuelve más tarde para ver si hay nuevos juegos disponibles.</p>
+</div>
+<div>
+        <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
+</div>
+
+<?php require_once "./template/layout/footer.phtml"; ?>

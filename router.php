@@ -26,6 +26,9 @@ switch ($params[0]) {
         $controller= new juegoController($res);
         $controller-> showHome();
         break;
+
+
+    //funciones de Juegos
     case 'juego':
         sessionAuthMiddleware($res);
         if (isset($params[1])){
@@ -34,52 +37,7 @@ switch ($params[0]) {
             $controller-> showJuego($ID_juego);
         }
         break;
-    case 'listaPlataforma':
-        sessionAuthMiddleware($res);
-        $controller = new platController($res);
-        $controller->showPlataformas();
-        break;
-    case 'listaCategoria':
-        sessionAuthMiddleware($res);
-        $controller = new catController($res);
-        $controller->showCategorias();
-        break;
-    case 'juegosPorPlataforma':
-        sessionAuthMiddleware($res);
-        if (isset($params[1])) {
-            $controller = new platController($res);
-            $ID_plataforma = $params[1];
-            $controller->showJuegosPorPlataforma($ID_plataforma);
-        }
-        break;
-    case 'juegosPorCategoria':
-        sessionAuthMiddleware($res);
-        if (isset($params[1])) {
-            $controller = new juegoController($res);
-            $ID_categoria = $params[1];
-            $controller->showJuegosPorCategoria($ID_categoria);
-        }
-        break;
-    case 'showLogin':
-        $controller= new authController();
-        $controller-> showLogin();
-        break;
-    case 'login':
-        $controller= new authController();
-        $controller-> login();
-        break;
-    case 'showSignup':
-        $controller= new authController();
-        $controller-> showSignup();
-        break;
-    case 'signup':
-        $controller= new authController();
-        $controller-> signup();
-        break;
-    case 'logout':
-        $controller = new authController();
-        $controller->logout();
-        break;
+
     case 'showNuevoJuego':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
@@ -92,38 +50,7 @@ switch ($params[0]) {
         $controller = new juegoController($res);
         $controller->crearJuego();
         break;
-    case 'nuevaCat':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        $controller = new catController($res);
-        $controller->crearCat();
-        break;
-    case 'showNuevaPlat':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        $controller = new platController($res);
-        $controller->showNuevaPlat();
-        break;
-    case 'nuevaPlat':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        $controller = new platController($res);
-        $controller->crearPlat();
-        break;
-    case 'borrarJuego':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        $controller= new juegoController($res);
-            $ID_juego= $params[1];
-            $controller-> borrarJuego($ID_juego);
-        break;
-    case 'borrarCat':
-        sessionAuthMiddleware($res);
-        break;
-    case 'borrarPlat':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
-        break;
+
     case 'showModifJuego':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
@@ -137,6 +64,84 @@ switch ($params[0]) {
         $controller = new juegoController($res);
         $controller->modifJuego();
         break;
+
+    case 'borrarJuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller= new juegoController($res);
+            $ID_juego= $params[1];
+            $controller-> borrarJuego($ID_juego);
+        break;
+
+
+    //funciones de sesion/usuarios
+    case 'showLogin':
+        $controller= new authController();
+        $controller-> showLogin();
+        break;
+    case 'login':
+        $controller= new authController();
+        $controller-> login();
+        break;
+
+    case 'showSignup':
+        $controller= new authController();
+        $controller-> showSignup();
+        break;
+    case 'signup':
+        $controller= new authController();
+        $controller-> signup();
+        break;
+
+    case 'logout':
+        $controller = new authController();
+        $controller->logout();
+        break;
+
+
+    //funciones de Plataformas
+    case 'listaPlataforma':
+        sessionAuthMiddleware($res);
+        $controller = new platController($res);
+        $controller->showPlataformas();
+        break;
+    case 'juegosPorPlataforma':
+        sessionAuthMiddleware($res);
+        if (isset($params[1])) {
+            $controller = new platController($res);
+            $ID_plataforma = $params[1];
+            $controller->showJuegosPorPlataforma($ID_plataforma);
+        }
+        break;
+
+    case 'showNuevaPlat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $controller->showNuevaPlat();
+        break;
+    case 'nuevaPlat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $controller->crearPlat();
+        break;
+
+    case 'showBorrarPlat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new PlatController($res);
+        $ID_plataforma = $params[1];
+        $controller->showBorrarPlat($ID_plataforma);
+        break;
+    case 'borrarPlat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new platController($res);
+        $ID_plataforma = $params[1];
+        $controller->borrarPlat($ID_plataforma);        
+        break;
+
     case 'showModifPlat':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
@@ -148,10 +153,74 @@ switch ($params[0]) {
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new platController($res);
-        $ID_plataforma = $params[1];
-        $controller->modifPlat($ID_plataforma);
+        $controller->modifPlat();
         break;
 
+
+    //funciones de Categorias
+    case 'listaCategoria':
+        sessionAuthMiddleware($res);
+        $controller = new catController($res);
+        $controller->showCategorias();
+        break;
+    case 'juegosPorCategoria':
+        sessionAuthMiddleware($res);
+        if (isset($params[1])) {
+            $controller = new catController($res);
+            $ID_categoria = $params[1];
+            $controller->showJuegosPorCategoria($ID_categoria);
+        }
+        break;
+
+    case 'showNuevaCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $controller->showNuevaCat();
+        break;
+    case 'nuevaCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $controller->nuevaCat();
+        break;
+
+    case 'showModifCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $ID_categoria = $params[1];
+        $controller->showModifCat($ID_categoria);
+        break;
+    case 'modifCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $ID_categoria = $params[1];
+        $controller->modifCat($ID_categoria);
+        break;
+        
+    case 'showModifCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $ID_plataforma = $params[1];
+        $controller->showModifCat($ID_categoria);
+        break;
+    case 'showBorrarCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $ID_categoria = $params[1];
+        $controller->showBorrarCat($ID_categoria);
+        break;
+    case 'borrarCat':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new catController($res);
+        $ID_categoria = $params[1];
+        $controller->borrarCat($ID_categoria);        
+        break;
     echo "404 not found";
     break;
 }

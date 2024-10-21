@@ -92,15 +92,13 @@ public function modifJuego() {
         return $this->view->showError('No se ha seleccionado un juego');
     }
 
-    // Asegurarnos de que todos los campos sean correctos
     $juegoModificado = [
         'ID_juego' => $_POST['ID_juego'],
         'nombre' => $_POST['nombre'],
         'ID_cat' => $_POST['ID_cat'],
         'ID_plat' => $_POST['ID_plat'], 
-        'descripcion' => $_POST['descripcion'],  // Corregido 'descripción' a 'descripcion' para evitar errores
+        'descripción' => $_POST['descripción'],  
         'imagen' => $_POST['imagen'],
-        'ID_usuario' => $_SESSION['ID_usuario']     // Aseguramos de incluir ID_usuario si es necesario
     ];
 
     if ($this->model->modifJuego($juegoModificado)) {
@@ -122,31 +120,4 @@ public function borrarJuego($ID_juego){
         header('Location: ' . BASE_URL);
 
 } 
-
-/* public function modifJuego(){
-    if (empty($_POST['ID_juego'])) {
-        return $this->view->showError('No se ha seleccionado un juego');
-    }
-
-    $juegoModificado = [
-        'ID_juego' => $_POST['ID_juego'],
-        'nombre' => $_POST['nombre'],
-        'ID_cat' => $_POST['ID_cat'],
-        'ID_plat' => $_POST['ID_plat'], 
-        'descripcion' => $_POST['descripción'], 
-        'imagen' => $_POST['imagen']
-    ];
-
-    if($this->model->modifJuego($juegoModificado['ID_juego'], $juegoModificado)){
-        header('Location:' . BASE_URL . 'home');
-    } else{
-        return $this->view->showError('Error al modificar el juego');
-    }
-
-     
-} */
-
-
-
-
 }

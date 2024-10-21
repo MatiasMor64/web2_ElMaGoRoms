@@ -4,40 +4,32 @@ class categoriaView{
     public function __construct($user){
         $this->user = $user;
     }
-    function showHome($juegos){//, $categorias, $plataformas){
-        require_once "./template/juegos.phtml";
-    }
-
-    function showDetail($juego, $categoria, $plataforma){
-        require_once "./template/detalleJuego.phtml";
-    }
 
     function showCategorias($categorias) {
         require_once "./template/categorias.phtml";
     }
 
-    function showPlataformas($plataformas) {
-        require_once "./template/plataformas.phtml";
-    }
-
-    function showJuegosPorCategoria($juegos) {
+    function showJuegosFC($juegos) {
         require_once "./template/juegosPorCategoria.phtml";
     }
 
-    function showJuegosPorPlataforma($juegos) {
-        require_once "./template/juegosPorPlataforma.phtml";
+    function showNoJuegos($mensaje) {
+        require_once('./template/showNoJuegos.phtml');
     }
 
-    function showCrearJuego($categoria, $plataforma){
-        require_once "./template/form_nuevoJuego.phtml";
+    function showModifCat($categoria){
+        require_once './template/form_showModifCat.phtml';
     }
 
-    function showModifJuego($categoria, $plataforma, $juego){
-        require_once "./template/form_modifJuego.phtml";
+    function showNuevaCat(){
+        require_once './template/form_showNuevaCat.phtml';
+    }
+
+    public function showBorrarCat($categoria) {
+        require './template/alertaBorrarCat.phtml';
     }
 
     public function showError($error) {
         require './template/error.phtml';
     }
-
 }

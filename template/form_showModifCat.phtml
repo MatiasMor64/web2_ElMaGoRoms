@@ -1,0 +1,17 @@
+<?php
+    require_once 'template/layout/header.phtml';
+?>
+<form method="POST" action="modifCat" class="container mt-4">
+    <h2>Modificar <?php echo $categoria->categoría; ?>: </h2>
+    <div class="mb-3">
+        <label for="consola" class="form-label">categoría</label>
+        <input type="text" name="consola" class="form-control" id="consola" placeholder="Categoría a editar" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar la categoría</button>
+    <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
+</form>
+
+<?php
+    require_once './template/layout/footer.phtml';
+?>
+

@@ -1,7 +1,7 @@
 <?php
 
-require_once './app/models/categoria_model.php'; 
-require_once './app/views/categoria_view.php';    
+require_once './app/models/categoria_model.php';   
+require_once './app/views/categoria_view.php';   
 
 class catController {
 
@@ -12,84 +12,70 @@ class catController {
         $this->model = new categoriaModel();
         $this->view = new categoriaView($res->user);
     }
-    
+
     function showCategorias() {
-        $categorias = $this->model->getCategorias();
+        $categorias= $this->model->getCategorias();
         return $this->view->showCategorias($categorias);
     }
 
     function showJuegosPorCategoria($ID_categoria) {
         $juegos = $this->model->getJuegosPorCategoria($ID_categoria);
         if($juegos){
-            
+            return $this->view->showJuegosFC($juegos);
+        } else {
+            return $this->view->showNoJuegos("No hay juegos disponibles para esta categoria.");
         }
-        return $this->view->showHome($juegos);
+    }
+    
+    function showNuevaCat(){
+        $this->view->showNuevaCat();
     }
 
-    public function showAddCategoriaForm() {
-        $this->view->addCategoriaForm();
-    }
-
-    public function crearCat() {
-        if (!isset($_POST['nombre_categoria']) || empty(trim($_POST['nombre_categoria']))) {
-            return $this->categoriaView->showError('Falta completar el nombre de la categoría.');
+    public function nuevaCat() {
+        if (!isset($_POST['categoria']) || empty(trim($_POST['categoria']))) {
+            return $this->view->showError('Falta completar el nombre de la categoría.');
         }
 
-        $nombre_categoria = $_POST['nombre_categoria'];
+        $categoria = $_POST['categoria'];
+        $this->model->nuevaCat($categoria);
 
-        $this->model->crearCat($nombre_categoria, $imagen_url);
+        header('Location: ' . BASE_URL . 'listaCategoria');
+        exit();
+    }
+    
 
-        header('Location: ' . BASE_URL . 'showCategories');
+    public function showModifCat($ID_categoria) {
+        $categoria = $this->model->getCategoria($ID_categoria);
+        $this->view->showModifCat($categoria);
+    }
+
+    public function modifCat($ID_categoria) {
+        if (!isset($_POST['consola']) || empty(trim($_POST['consola']))) {
+            return $this->view->showError('Falta completar el nombre de la categoría.');
+        }
+
+        $consola = $_POST['consola'];
+        $this->model->modifCat($ID_categoria, $consola);
+
+        header('Location: '. BASE_URL. 'listaCategoria');
         exit();
     }
 
-    public function deleteCategory() {
-        if (!isset($_POST['id_categoria']) || empty(trim($_POST['id_categoria']))) {
-            return $this->categoriaView->showError('Falta el ID de la categoría para eliminar.');
-        }
-
-        $id_categoria = $_POST['id_categoria'];
-
-        // Llamar al modelo para eliminar la categoría
-        if ($this->model->deleteCategory($id_categoria)) {
-            header('Location: ' . BASE_URL . 'showCategories');
-            exit();
-        } else {
-            return $this->categoriaView->showError('Error al eliminar la categoría.');
-        }
+    public function showBorrarCat($ID_categoria){
+        $categoria = $this->model->getCategoria($ID_categoria);
+        $this->view->showBorrarCat($categoria);
     }
 
-    // Mostrar el formulario de edición de una categoría
-    public function editCategory($id_categoria) {
-        $category = $this->model->getCategoryById($id_categoria); // Obtener la categoría por ID
-        if ($category) {
-            $this->view->editCategoryForm($category); // Llama a la vista para mostrar el formulario de edición
-        } else {
-            return $this->categoriaView->showError('Categoría no encontrada.');
-        }
-    }
+    public function borrarCat($ID_categoria) {
 
-    // Actualizar una categoría existente
-    public function updateCategory() {
-        if (!isset($_POST['id_categoria']) || empty(trim($_POST['id_categoria']))) {
-            return $this->categoriaView->showError('Falta el ID de la categoría.');
+        $categoria = $this->model->getCategoria($ID_categoria);
+
+        if (!$categoria) {
+            return $this->view->showError("la categoria elegida es incorrecta");
         }
 
-        // Obtener los datos del formulario
-        $id_categoria = $_POST['id_categoria'];
-        $nombre_categoria = $_POST['nombre_categoria'] ?? null;
-        $imagen_url = $_POST['imagen_url'] ?? null;
+        $this->model->borrarCat($ID_categoria);
 
-        // Validar los campos
-        if ($nombre_categoria && $imagen_url) {
-            if ($this->model->updateCategory($id_categoria, $nombre_categoria, $imagen_url)) {
-                header('Location: ' . BASE_URL . 'showCategories');
-                exit();
-            } else {
-                return $this->categoriaView->showError('Error al actualizar la categoría.');
-            }
-        } else {
-            return $this->categoriaView->showError('Completar todos los campos.');
-        }
+        header('Location: ' . BASE_URL);
     }
 }

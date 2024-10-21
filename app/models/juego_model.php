@@ -22,6 +22,13 @@ class juegoModel extends romsModel {
         $categoria= $query->fetch(PDO::FETCH_OBJ);
         return $categoria;
     }
+
+    function getCategorias() {
+        $query = $this->db->prepare('SELECT * FROM categorías');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    
     function getPlataforma($juego){
         $query = $this->db->prepare('SELECT * FROM plataformas WHERE ID_plat = ?');
         $query->execute([$juego->ID_plat]);
@@ -52,16 +59,12 @@ class juegoModel extends romsModel {
     }
 
     public function modifJuego($juegoModificado) {
-        // Verificamos si $juegoModificado es un arreglo antes de acceder a sus elementos
         if (!is_array($juegoModificado)) {
             throw new Exception('Se esperaba un arreglo en lugar de una cadena u otro tipo de dato.');
         }
     
-        $query = $this->db->prepare('UPDATE juegos 
-                                     SET nombre = ?, imagen = ?, descripción = ?, ID_usuario = ?, ID_plat = ?, ID_cat = ? 
-                                     WHERE ID_juego = ?');
+        $query = $this->db->prepare('UPDATE juegos SET nombre = ?, imagen = ?, descripción = ?, ID_plat = ?, ID_cat = ? WHERE ID_juego = ?');
         
-        // Ejecutamos la consulta con los valores del juego modificado
         return $query->execute([
             $juegoModificado['nombre'],
             $juegoModificado['imagen'],
@@ -71,13 +74,6 @@ class juegoModel extends romsModel {
             $juegoModificado['ID_juego']
         ]);
     }
-
-    /*
-    public function modifJuego($nombre, $imagen, $descripción, $ID_usuario, $ID_plat, $ID_cat, $ID_juego){
-        $query = $this->db->prepare('UPDATE juegos SET nombre = ?, imagen = ?, descripcion = ?, ID_usuario = ?, ID_plat = ?, ID_cat = ? WHERE ID_juego = ?');
-        $query->execute([$nombre, $imagen, $descripción, $ID_usuario, $ID_plat, $ID_cat, $ID_juego]);
-    }
-    */
 
     public function borrarJuego($ID_juego) {
         $query = $this->db->prepare('DELETE FROM juegos WHERE ID_juego = ?');

@@ -9,18 +9,17 @@
             <div>
             <h2> Descargar </h2>
             </div>
+            <?php if($this->user): ?>
+                <a href="<?= BASE_URL ?>showModifJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Modificar Juego</a>
+            <?php endif; ?>
+            <?php if($this->user): ?>
+                <a href="<?= BASE_URL ?>borrarJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Borrar Juego</a>
+            <?php endif; ?>
+            <div>
+                <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
+            </div>
         </div>
         <img class="imagen-detalle" src=" <?php echo $juego->imagen; ?>" alt="img">
-    </article>
-    <article>
-        <?php if($this->user): ?>
-            <a href="<?= BASE_URL ?>showModifJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Modificar Juego</a>
-        <?php endif; ?>
-        <?php if($this->user): ?>
-            <a href="<?= BASE_URL ?>borrarJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Borrar Juego</a>
-        <?php endif; ?>
-        <div>
-            <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al menu principal</a>
-        </div>
+        
     </article>
 <?php require_once './template/layout/footer.phtml'; ?>

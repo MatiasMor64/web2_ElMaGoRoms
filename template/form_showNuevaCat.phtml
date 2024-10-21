@@ -1,0 +1,17 @@
+<?php
+    require_once 'template/layout/header.phtml';
+?>
+<form method="POST" action="nuevaCat" class="container mt-4">
+    <h2>Crear una nueva categoría: </h2>
+    <div class="mb-3">
+        <label for="categoria" class="form-label">Categoría</label>
+        <input type="text" name="categoria" class="form-control" id="categoria" placeholder="Nueva Categoría" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar Nueva Categoría</button>
+    <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
+</form>
+
+<?php
+    require_once './template/layout/footer.phtml';
+?>
+

@@ -9,12 +9,24 @@ class plataformaView{
         require_once "./template/plataformas.phtml";
     }
 
-    function showJuegosPorPlataforma($juegos) {
+    function showJuegosFP($juegos) {
         require_once "./template/juegosPorPlataforma.phtml";
     }
 
-    function showCrearPlat(){
+    function showNoJuegos($mensaje) {
+        require_once('./template/showNoJuegos.phtml');
+    }
+
+    function showModifPlat($plataforma){
+        require_once './template/form_showModifPlat.phtml';
+    }
+
+    function showNuevaPlat(){
         require_once './template/form_showNuevaPlat.phtml';
+    }
+
+    public function showBorrarPlat($plataforma) {
+        require './template/alertaBorrarPlat.phtml';
     }
 
     public function showError($error) {

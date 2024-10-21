@@ -1,9 +1,9 @@
 <?php
     require_once 'template/layout/header.phtml';
 ?>
-<form method="POST" action="<?= BASE_URL ?>modifJuego" class="container mt-4"> <!-- Corrige el action a la ruta correcta -->
+<form method="POST" action="<?= BASE_URL ?>modifJuego" class="container mt-4">
     <h2>Modificar el juego: <?php echo $juego->nombre; ?> </h2>
-    <input type="hidden" name="ID_juego" value="<?= $juego->ID_juego; ?>"> <!-- Añade un campo oculto para el ID del juego -->
+    <input type="hidden" name="ID_juego" value="<?= $juego->ID_juego; ?>">
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del juego" value="<?= $juego->nombre; ?>" required>
@@ -14,7 +14,7 @@
     </div>
     <div class="mb-3">
         <label for="descripción" class="form-label">Descripción</label>
-        <input type="text" name="descripción" class="form-control" id="descripción" placeholder="Descripción" value="<?= $juego->descripcion; ?>" required>
+        <input type="text" name="descripción" class="form-control" id="descripción" placeholder="descripción" value="<?= $juego->descripción; ?>" required>
     </div>
     <div class="mb-3">
         <label for="ID_plat" class="form-label">Plataforma</label>

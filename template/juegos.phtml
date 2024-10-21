@@ -10,15 +10,15 @@
             */ ?>
             <a href="<?= BASE_URL ?>juego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Ver Detalles</a>
             <?php if($this->user): ?>
-                <a href="<?= BASE_URL ?>showModifJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Modificar Juego</a>
+                <a href="<?= BASE_URL ?>showModifJuego/<?= $juego->ID_juego ?>" class="btn btn-primary">Modificar Juego</a>
             <?php endif; ?>
             <?php if($this->user): ?>
-                <a href="<?= BASE_URL ?>borrarJuego/<?= $juego->ID_juego ?>" class="btn btn-secondary">Borrar Juego</a>
+                <a href="<?= BASE_URL ?>borrarJuego/<?= $juego->ID_juego ?>" class="btn btn-danger">Borrar Juego</a>
             <?php endif; ?>
         </div>
     <?php } ?>
     <?php if($this->user): ?>
-        <a href='<?= BASE_URL ?>showNuevoJuego' class='btn btn-primary'>Crear Nuevo Juego</a>
+        <a href='<?= BASE_URL ?>showNuevoJuego' class='btn btn-secondary'>Crear Nuevo Juego</a>
     <?php endif; ?>
     
 

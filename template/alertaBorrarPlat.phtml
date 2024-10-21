@@ -1,0 +1,11 @@
+<?php require_once './template/layout/header.phtml'; ?>
+<h1>Alerta: </h1>
+    <h3>Al borrar una consola, se van a borrar todos los juegos que utilicen dicha plataforma</h3>
+    <div>
+        <h2> Estas seguro de querer borrar la consola <?php echo "$plataforma->consola" ?>? </h2>
+        <a href="<?= BASE_URL ?>borrarPlat/<?= $plataforma->ID_plat ?>" class="btn btn-secondary">Sí, eliminar</a>
+    </div>
+    <a href='<?= BASE_URL ?>home' class='btn btn-primary'>No, volver al inicio</a>
+
+<?php require_once "./template/layout/footer.phtml"; ?>
+

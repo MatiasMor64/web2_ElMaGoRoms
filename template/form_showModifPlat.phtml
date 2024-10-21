@@ -1,0 +1,18 @@
+<?php
+    require_once 'template/layout/header.phtml';
+?>
+<form method="POST" action="modifPlat" class="container mt-4">
+    <h2>Modificar consola: </h2>
+    <input type="hidden" name="ID_plat" value="<?= $plataforma->ID_plat; ?>">
+    <div class="mb-3">
+        <label for="consola" class="form-label">consola</label>
+        <input type="text" name="consola" class="form-control" id="consola" placeholder="Consola a editar" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar la plataforma</button>
+    <a href='<?= BASE_URL ?>home' class='btn btn-primary'>Volver al inicio</a>
+</form>
+
+<?php
+    require_once './template/layout/footer.phtml';
+?>
+

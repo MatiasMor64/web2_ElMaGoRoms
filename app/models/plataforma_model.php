@@ -10,11 +10,11 @@ class plataformaModel extends romsModel {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getPlataforma($juego){
-        $query = $this->db->prepare('SELECT * FROM plataformas WHERE ID_cat = ?');
-        $query->execute([$juego->ID_cat]);
+    function getPlataforma($ID_plataforma){
+        $query = $this->db->prepare('SELECT * FROM plataformas WHERE ID_plat = ?');
+        $query->execute([$ID_plataforma]);
         $plataforma= $query->fetch(PDO::FETCH_OBJ);
-        return $Plataforma;
+        return $plataforma;
     }
 
     function getPlataformas() {
@@ -24,7 +24,7 @@ class plataformaModel extends romsModel {
     }
 
     function getJuegosPorPlataforma($ID_plataforma) {
-        $query = $this->db->prepare('SELECT * FROM juegos WHERE ID_Plataforma = ?');
+        $query = $this->db->prepare('SELECT * FROM juegos WHERE ID_plat = ?');
         $query->execute([$ID_plataforma]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -37,19 +37,24 @@ class plataformaModel extends romsModel {
         return $id;
     }
 
-    public function deletePlataforma($ID_plataforma) {
-        $query = $this->db->prepare("DELETE FROM plataformas WHERE ID_cat = ?");
+    public function borrarPlat($ID_plataforma) {
+        $query = $this->db->prepare("DELETE FROM juegos WHERE ID_plat = ?");
+        $query->execute([$ID_plataforma]);
+        $query = $this->db->prepare("DELETE FROM plataformas WHERE ID_plat = ?");
         return $query->execute([$ID_plataforma]);
     }
 
-    public function getPlataformaById($ID_plataforma) {
-        $query = $this->db->prepare('SELECT * FROM plataformas WHERE ID_cat = ?');
-        $query->execute([$ID_plataforma]);
-        return $query->fetch(PDO::FETCH_OBJ);
-    }
 
-    public function updatePlataforma($ID_plataforma, $nombre_plataforma, $imagen_url) {
-        $query = $this->db->prepare('UPDATE plataformas SET plataformas = ?, imagen_url = ? WHERE ID_cat = ?');
-        return $query->execute([$nombre_plataforma, $imagen_url, $ID_plataforma]);
+    public function modifPlat($consolaModif) {
+        if (!is_array($consolaModif)) {
+            throw new Exception('Se esperaba un arreglo en lugar de una cadena u otro tipo de dato.');
+        }
+        
+        $query = $this->db->prepare('UPDATE plataformas SET consola = ? WHERE ID_plat = ?');
+        
+        return $query->execute([
+            $consolaModif['consola'],
+            $consolaModif['ID_plat']
+        ]);
     }
 }
