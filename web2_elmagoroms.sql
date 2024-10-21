@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2024 a las 01:47:28
+-- Tiempo de generación: 21-10-2024 a las 03:15:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,10 +37,16 @@ CREATE TABLE `categorías` (
 --
 
 INSERT INTO `categorías` (`ID_cat`, `categoría`) VALUES
-(2, 'Acción'),
-(1, 'Aventura'),
-(4, 'Lucha'),
-(3, 'Rompecabezas');
+(2, 'Accion'),
+(5, 'Aventura'),
+(8, 'Carreras'),
+(7, 'Casual'),
+(9, 'Lucha'),
+(6, 'Rompecabezas'),
+(10, 'Shooter'),
+(18, 'test 1'),
+(16, 'test 2'),
+(17, 'test 3');
 
 -- --------------------------------------------------------
 
@@ -63,14 +69,17 @@ CREATE TABLE `juegos` (
 --
 
 INSERT INTO `juegos` (`ID_juego`, `nombre`, `imagen`, `descripción`, `ID_usuario`, `ID_plat`, `ID_cat`) VALUES
-(1, 'The Legend of Zelda Twilight Princess', 'https://bdjogos.com.br/capas/3778-the-legend-of-zelda-twilight-princess-wii-capa-1.jpg', 'The Legend of Zelda: Twilight Princess es un juego de aventura y acción, parte de la famosa franquicia The Legend of Zelda, desarrollado por Nintendo y lanzado en 2006 para GameCube y Wii. Es conocido por su estilo más oscuro y realista, y por el uso de mecánicas de transformación de Link en un lobo, así como por la introducción de un mundo crepuscular paralelo que contrasta con el reino de Hyrule. El juego sigue a Link, un joven granjero de la pacífica aldea de Ordon. Un día, Hyrule cae bajo la influencia de una dimensión oscura llamada \"Crepúsculo\", que cubre el reino en sombras. Al ser arrastrado a esta dimensión, Link se transforma en un lobo, lo que le permite interactuar de una manera especial con el mundo del Crepúsculo. Pronto conoce a Midna, una misteriosa criatura que lo guía en su viaje para restaurar el equilibrio en el reino. Juntos, Link y Midna deben encontrar las piezas de la \"Fused Shadow\" y liberar a los espíritus guardianes de Hyrule, quienes han sido derrotados por la invasión del Crepúsculo. Midna, que pertenece al Reino Crepuscular, tiene sus propios motivos para detener al villano Zant, un tirano que se ha apoderado del trono en su mundo y está utilizando el poder del Crepúsculo para esclavizar a Hyrule. A medida que la historia avanza, Link y Midna descubren que Zant es solo un peón de un mal aún mayor: Ganondorf, el archienemigo clásico de la serie, quien busca dominar tanto Hyrule como el Reino Crepuscular.', 1, 2, 1),
-(2, 'God of War ', 'https://i.3djuegos.com/juegos/3569/god_of_war/fotos/ficha/god_of_war-2736533.jpg', '\"God of War\" para PS2 sigue la historia de Kratos, un guerrero espartano que busca venganza contra Ares, el dios de la guerra, tras ser traicionado. Atraviesa mitologías griegas, enfrentando criaturas y resolviendo acertijos, mientras busca redención. Con una jugabilidad fluida y combates intensos, ', 1, 1, 2),
-(3, 'Monster Hunter ', 'https://i.redd.it/ax8r7ziupb8c1.jpeg', '\"Monster Hunter\" para PS2 es un juego de acción y rol donde los jugadores asumen el rol de cazadores en un mundo lleno de criaturas gigantes. Los jugadores deben rastrear, cazar y recolectar materiales de monstruos para crear armas y armaduras. La cooperación en línea y la estrategia son clave para ', 1, 1, 1),
-(6, 'Dragon Ball Z Budokai Tenkaichi 3', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', '\"Dragon Ball Z: Budokai Tenkaichi 3\" para Wii es un juego de lucha que ofrece un extenso elenco de personajes de la franquicia. Con combates 3D, los jugadores pueden realizar ataques especiales y transformaciones icónicas. El modo historia recorre las sagas de la serie, mientras que el multijugador ', 2, 2, 4),
-(10, 'Super Mario Galaxy', 'https://m.media-amazon.com/images/I/71gnh672D1L.jpg', '\"Super Mario Galaxy\" para Wii es un juego de plataformas en 3D donde Mario viaja por distintos planetas para rescatar a la Princesa Peach de Bowser. Con mecánicas innovadoras de gravedad, los jugadores saltan entre mundos únicos, resuelven acertijos y recolectan estrellas. La jugabilidad, el diseño visual y la música crean una experiencia mágica.', 3, 2, 1),
-(13, 'Dragon Ball Z Budokai Tenkaichi 4', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', '\"Dragon Ball Z: Budokai Tenkaichi 3\" para Wii es un juego de lucha que ofrece un extenso elenco de personajes de la franquicia. Con combates 3D, los jugadores pueden realizar ataques especiales y transformaciones icónicas. El modo historia recorre las sagas de la serie, mientras que el multijugador ', 2, 2, 4),
-(14, 'God of War 2', 'https://i.3djuegos.com/juegos/3569/god_of_war/fotos/ficha/god_of_war-2736533.jpg', '\"God of War\" para PS2 sigue la historia de Kratos, un guerrero espartano que busca venganza contra Ares, el dios de la guerra, tras ser traicionado. Atraviesa mitologías griegas, enfrentando criaturas y resolviendo acertijos, mientras busca redención. Con una jugabilidad fluida y combates intensos, ', 1, 1, 2),
-(15, 'Monster Hunter Dos', 'https://i.redd.it/ax8r7ziupb8c1.jpeg', '\"Monster Hunter\" para PS2 es un juego de acción y rol donde los jugadores asumen el rol de cazadores en un mundo lleno de criaturas gigantes. Los jugadores deben rastrear, cazar y recolectar materiales de monstruos para crear armas y armaduras. La cooperación en línea y la estrategia son clave para ', 1, 1, 1);
+(19, 'Call of Duty Black Ops', 'https://m.media-amazon.com/images/I/81LRQ0NqKXL.jpg', 'Call of Duty: Black Ops para la Wii es un juego de disparos en primera persona ambientado en la Guerra Fría, desarrollado por Treyarch. El jugador asume el rol de agentes encubiertos en misiones que abarcan lugares como Cuba, Vietnam y la Unión Soviética. La versión para Wii incluye controles adaptados al Wii Remote y gráficos reducidos en comparación con otras plataformas, pero mantiene la jugabilidad central, el modo campaña y multijugador online. También incluye el popular modo ', 1, 2, 10),
+(29, 'Mario Kart Wii', 'https://m.media-amazon.com/images/I/81nWR8OwryL.jpg', 'Mario Kart Wii es un videojuego de carreras lanzado por Nintendo en 2008 para la consola Wii. Es la sexta entrega de la serie Mario Kart y continúa con la fórmula característica de carreras arcade protagonizadas por personajes del universo de Mario.  En Mario Kart Wii, los jugadores compiten en carreras utilizando vehículos como karts y motocicletas, cada uno con diferentes características de velocidad, manejo y peso. Hay 32 pistas en total, divididas en 16 nuevas y 16 retro, las cuales son versiones actualizadas de pistas de entregas anteriores de la saga.  El juego ofrece varios modos de juego, tanto para un solo jugador como multijugador, con soporte para hasta cuatro jugadores en pantalla dividida y hasta 12 jugadores en línea. Los modos principales incluyen el Grand Prix (competiciones de varias carreras), Contrarreloj, Versus y Batalla, donde los jugadores pueden competir en batallas de globos o de monedas.  Una característica destacada es el uso del volante de Wii, que permite a los jugadores usar los controles de movimiento para dirigir los vehículos. También se puede jugar con otros tipos de controladores, como el Wii Remote y Nunchuk, el mando clásico o el mando de GameCube.', 8, 2, 8),
+(37, 'Metal Gear Solid 4: Sons of the Patriots', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3992LIEqoziacohfZzZs-Mr5ZkSRhCPR9n7F-AjVbMDRlG3L1rdhYON-XQj-rgaseQFs&usqp=CAU', 'CINE ABSOLUTO', 8, 5, 2),
+(38, 'GoW Collection Ps3', 'https://acdn.mitiendanube.com/stores/001/609/427/products/god-of-war-collection-ps31-b3652bf40edc29407816182390179701-640-0.jpg', 'un juego muy pero que muy bueno, tan bueno que son 2', 8, 5, 2),
+(39, 'Welcome to Animal Crossing', 'https://d.furaffinity.net/art/hatchlingbyheart/1611376270/1611376267.hatchlingbyheart_ac_cd.png', 'Juego relajante de pasar el dia a dia', 8, 3, 7),
+(40, 'Animal Crossing: Turning Over a New Leaf', 'https://m.media-amazon.com/images/I/91InrW8-r-L._SL1500_.jpg', 'Juego relajante de pasar el dia a dia, ahora Portatil!', 8, 6, 7),
+(41, 'Monster Hunter', 'https://www.retroplace.com/pics/ps2/packshots/78640--monster-hunter-g.png', 'Monster Hunter es un videojuego de acción y rol lanzado por Capcom en 2004 para la PlayStation 2. Es el primer título de la exitosa serie Monster Hunter y presenta una experiencia centrada en la caza de grandes criaturas en un entorno de fantasía prehistórica.  En el juego, los jugadores asumen el papel de un cazador, cuya misión principal es completar encargos que generalmente involucran cazar monstruos gigantes en diversos ecosistemas. El jugador puede usar una variedad de armas y herramientas, como espadas, lanzas, ballestas y trampas, cada una con sus propias ventajas y estilos de combate. No hay una progresión típica de nivel, sino que la mejora del cazador depende de los recursos obtenidos al cazar monstruos, que permiten fabricar nuevas armas y armaduras.  El combate es un aspecto central del juego, siendo más táctico y metódico que los juegos de acción convencionales. Los monstruos tienen patrones de ataque y comportamientos únicos, por lo que observar sus movimientos y planificar estrategias es clave para el éxito.', 8, 1, 5),
+(42, 'Dragon Ball Z Budokai Tenkaichi 3 (wii)', 'https://i5.walmartimages.com/seo/Dragon-Ball-Z-Budokai-Tenkaichi-3-Nintendo-Wii_d5dbc7c0-aece-4ede-9d6b-e615150d82c1.03f3011a2eca9f558068d02bc82ee5ca.jpeg', 'un juegazo de peleas', 8, 2, 9),
+(43, 'The Legend of Zelda Twilight Princess', 'https://bdjogos.com.br/capas/3778-the-legend-of-zelda-twilight-princess-wii-capa-1.jpg', 'The Legend of Zelda: Twilight Princess es uno de los juegos más aclamados de la legendaria franquicia \"The Legend of Zelda\", desarrollado por Nintendo y lanzado originalmente en 2006 para las consolas GameCube y Wii. Este título se destaca por su atmósfera oscura y madura, presentando una historia más sombría en comparación con sus predecesores, así como una jugabilidad que mezcla mecánicas clásicas de la serie con innovaciones frescas que profundizan la inmersión y la narrativa.  Historia La trama de Twilight Princess comienza en una tranquila aldea llamada Ordon, donde el protagonista, Link, vive una vida pacífica como un humilde granjero. Sin embargo, su destino cambia drásticamente cuando fuerzas oscuras invaden el Reino de Hyrule. Una misteriosa neblina oscura conocida como \"Crepúsculo\" comienza a extenderse por la tierra, convirtiendo a sus habitantes en espíritus y alterando el equilibrio entre la luz y la oscuridad', 8, 2, 5),
+(46, 'El Profesor Layton y la Villa Misteriosa', 'https://media.vandal.net/m/6212/professor-layton-y-la-villa-misteriosa-201423203214_1.jpg', 'El Profesor Layton y la Villa Misteriosa es un videojuego de aventura y rompecabezas desarrollado por Level-5 y lanzado para la consola Nintendo DS en 2007 (2008 en Europa y América). Es el primer juego de la serie Profesor Layton, protagonizada por el brillante profesor de arqueología Hershel Layton y su joven aprendiz, Luke Triton.  La historia sigue a Layton y Luke mientras investigan el enigma de la \"Manzana Dorada\" en la peculiar Villa St. Mystere, un lugar lleno de misterios y personajes excéntricos. Mientras exploran la villa, el profesor y Luke se encuentran con una serie de rompecabezas que deben resolver para avanzar en la trama.  El juego combina una narrativa intrigante con más de 130 rompecabezas que abarcan desde problemas lógicos, acertijos visuales, matemáticos y rompecabezas de ingenio. Los jugadores deben usar la pantalla táctil de la DS para interactuar con los acertijos y explorar la villa. También hay \"picarats\", una especie de puntos que se obtienen al resolver los rompecabezas y que sirven para medir el desempeño del jugador.', 13, 12, 6),
+(49, 'Gran Turismo 4', 'https://www.gran-turismo.com/images/c/i1UkJZak4T1rSEc.jpg', 'Clasicazo de carreras', 8, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -88,8 +97,16 @@ CREATE TABLE `plataformas` (
 --
 
 INSERT INTO `plataformas` (`ID_plat`, `consola`) VALUES
+(6, 'Nintendo 3ds'),
+(12, 'Nintendo Ds'),
+(3, 'Nintendo Gamecube'),
+(8, 'Nintendo Switch'),
 (2, 'Nintendo Wii'),
-(1, 'PlayStation2');
+(5, 'Playstation 3'),
+(1, 'PlayStation2'),
+(14, 'test 1'),
+(11, 'test 2'),
+(13, 'test 3');
 
 -- --------------------------------------------------------
 
@@ -112,10 +129,9 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`ID_usuario`, `nombre`, `usuario`, `password`, `permisos`) VALUES
 (1, 'Matías', 'matiasmorcillo128@gmail.com', '123', 2),
 (2, 'Iago', 'iagomduran@gmail.com', '456', 2),
-(3, 'Benjamín', 'benjapro777@gmail.com', '123', 1),
-(4, 'Lucas', 'lucasretro27@yahoo.com', '456', 1),
 (7, '', 'dada', '$2y$10$zxB025TXzLgC5IXHGf9ZMeHFtNSv4VIFkp7gQLG8fAz/e6Lvufun6', 1),
-(8, '', 'webadmin', '$2y$10$n.qitqXRLytMnpS0WstSCu1EP5dw1FzeTE3Pj8NDCCQjOTfUBC.yu', 1);
+(8, '', 'webadmin', '$2y$10$n.qitqXRLytMnpS0WstSCu1EP5dw1FzeTE3Pj8NDCCQjOTfUBC.yu', 1),
+(13, '', 'noa', '$2y$10$tgW48PQTzho./M1NaYb/yO3gejMv2xERJZ9CZHDh.X8A9sCqsLcma', 1);
 
 --
 -- Índices para tablas volcadas
@@ -160,25 +176,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorías`
 --
 ALTER TABLE `categorías`
-  MODIFY `ID_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `ID_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas`
 --
 ALTER TABLE `plataformas`
-  MODIFY `ID_plat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_plat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -189,8 +205,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `juegos`
   ADD CONSTRAINT `juegos_ibfk_2` FOREIGN KEY (`ID_cat`) REFERENCES `categorías` (`ID_cat`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `juegos_ibfk_3` FOREIGN KEY (`ID_usuario`) REFERENCES `usuarios` (`ID_usuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `juegos_ibfk_4` FOREIGN KEY (`ID_plat`) REFERENCES `plataformas` (`ID_plat`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `juegos_ibfk_3` FOREIGN KEY (`ID_usuario`) REFERENCES `usuarios` (`ID_usuario`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
